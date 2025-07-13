@@ -1,0 +1,8 @@
+*{
+  scroll-behavior: smooth;
+}
+@import "tailwindcss";
+
+.explore-menu::-webkit-scrollbar{
+  display: none;
+}
