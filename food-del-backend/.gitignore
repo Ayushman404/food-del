@@ -1,16 +1,25 @@
 # Node.js
 node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
 
 # Logs
 logs/
 *.log
-npm-debug.log*
 
 # Dependency directories
 pids/
 *.pid
 *.seed
 *.pid.lock
+
+# Environment variables
+.env
+.env.development.local
+.env.test.local
+.env.production.local
+.env.local
 
 # Optional npm cache directory
 .npm/
@@ -21,12 +30,22 @@ pids/
 # Optional REPL history
 .node_repl_history
 
-# Environment variables
-.env*
+# IDE-specific files (e.g., VS Code)
+.vscode/
+.idea/
 
 # Build artifacts
 dist/
 build/
+coverage/
 
-# Packaged files
-*.tgz
+# Test results
+*.xml
+*.tap
+*.html
+
+# macOS specific files
+.DS_Store
+
+# Thumbnails
+Thumbs.db
