@@ -3,26 +3,46 @@ import { menu_list } from '../../assets/frontend_assets/assets'
 
 const Menu = ({category, setCategory}) => {
   return (
-    <div className="menu flex flex-col gap-3 justify-center items-center" id='menu'>
-        <h1 className='border-b-3 border-b-orange-500 text-3xl font-bold tracking-wide text-center'>Explore Menu</h1>
-        <p className='text-center text-xl'><span className='border-l-3 border-l-orange-500 pl-3'>Choose</span> form diverse menu featuring a delectable array Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque minima voluptatem adipisci.</p>
+    <div className="menu flex flex-col gap-6 items-center px-4 py-6 w-full" id="menu">
+  <h1 className="text-4xl font-extrabold tracking-wide text-center text-slate-800 relative inline-block">
+    Explore Menu
+    <span className="absolute left-1/2 transform -translate-x-1/2 -bottom-1 w-20 h-1 bg-gradient-to-r from-orange-400 to-orange-600 rounded-full"></span>
+  </h1>
 
-        <div className='explore-menu flex overflow-x-scroll gap-4 max-w-full p-4 justify-evenly my-2 text-center'>
-            {menu_list.map((item, index) =>(
-                <div key = {index} 
-                className={`shadow-md flex flex-col items-center justify-center gap-3 p-3 rounded-xl min-w-[150px] min-h-[200px] ${category === item.menu_name ? 'border-2 border-orange-500 shadow-orange-500/60' : ""}`}
-                onClick={() => category === item.menu_name ? setCategory('All') : setCategory(item.menu_name)}
-                >
+  <p className="text-center text-lg md:text-xl max-w-3xl text-gray-600 leading-relaxed">
+    <span className="pl-3 border-l-4 border-orange-500 font-semibold text-slate-800">Choose</span> from a diverse menu featuring a delectable array of dishes. Explore exciting flavors crafted to satisfy every palate.
+  </p>
 
-                    <img src={item.menu_image} className='w-[120px] rounded-full cursor-pointer' alt="" />
-                    <p className='text-slate-800 font-semibold'>{item.menu_name}</p>
-                </div>
-            ))
+  <div className="explore-menu flex gap-4 w-full px-2 py-4 overflow-x-auto scroll-smooth snap-x snap-mandatory scrollbar-hide md:justify-center">
+    {menu_list.map((item, index) => (
+      <div
+        key={index}
+        onClick={() =>
+          category === item.menu_name
+            ? setCategory("All")
+            : setCategory(item.menu_name)
+        }
+        className={`flex-shrink-0 snap-start shadow-md flex flex-col items-center justify-center gap-3 p-4 rounded-2xl min-w-[140px] min-h-[200px] transition-transform duration-200 cursor-pointer hover:scale-105 ${
+          category === item.menu_name
+            ? "border-2 border-orange-500 bg-orange-50 shadow-orange-300"
+            : "bg-white"
+        }`}
+      >
+        <img
+          src={item.menu_image}
+          className="w-24 h-24 rounded-full object-cover shadow-sm"
+          alt={item.menu_name}
+        />
+        <p className="text-slate-700 font-medium text-base text-center">
+          {item.menu_name}
+        </p>
+      </div>
+    ))}
+  </div>
 
-            }
-        </div>
-            <hr className='w-[80%] border-2 border-slate-500' />
-    </div>
+  <hr className="w-4/5 border-t-2 border-slate-400 mt-4" />
+</div>
+
   )
 }
 

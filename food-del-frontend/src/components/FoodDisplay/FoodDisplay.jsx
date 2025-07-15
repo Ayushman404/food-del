@@ -8,16 +8,31 @@ const FoodDisplay = ({category}) => {
 
   return (
 
-    <div className='mx-4'>
-        <h2 className='text-center font-bold tracking-wide text-2xl my-4 '>Top Dishes for you</h2>
-        <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mx-8 my-4'>
-            {food_list.map((food, index) => (
-                (category === 'All' || food.category === category ?
-                <FoodItem food = {food} key={index} />:
-                <div key={index}></div>)
-            ))}
+    <div className="px-4 py-8 max-w-[1400px] mx-auto">
+  {/* Header */}
+  <h2 className="text-center font-extrabold text-3xl md:text-4xl text-slate-800 tracking-wide relative mb-8">
+    Top Dishes for You
+    <span className="block mx-auto mt-2 w-20 h-1 bg-gradient-to-r from-orange-400 to-orange-600 rounded-full"></span>
+  </h2>
+
+  {/* Grid of Dishes */}
+  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 md:px-6">
+    {food_list.filter(food => category === 'All' || food.category === category)
+      .map((food, index) => (
+        <div key={index} className="transition-transform hover:scale-[1.015] duration-200">
+          <FoodItem food={food} />
         </div>
-    </div>
+      ))}
+  </div>
+
+  {/* Optional: Message when no items in selected category */}
+  {food_list.filter(food => category === 'All' || food.category === category).length === 0 && (
+    <p className="text-center text-slate-500 font-medium mt-10">
+      No dishes found for <span className="font-semibold text-orange-500">{category}</span>.
+    </p>
+  )}
+</div>
+
   )
 }
 
